@@ -1,0 +1,87 @@
+{% if j=="j" %}
+    {% extends "AccountantDash.html" %}
+    {% block m3 %}
+        <div class="container  mt-4 ">
+                <div class="row justify-content-center">
+                    <div class="col-md-4">
+                        <h3>Add course</h3>
+                                    <a href="accountant_home"><i class="bi bi-arrow-left fs-3"></i></a>
+                        <form method="post" action="add_course1">
+                            <div class="mb-3">
+                                <label for="reg_no" class="label">Reg No.</label>
+                                <input type="text" class="form-control" name="reg_no" value="{{reg_no}}" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="corse_name">Course name</label>
+                                <select name="corse_name"  class="form-control" required>
+                                    <option value="">Select Course Name</option>
+                                    <option value="C Language"> C Language</option>
+                                    <option value="Python Development"> Python Development</option>
+                                    <option value="Java">Java</option>
+                                    <option value="Mern">Mern</option>
+                                    <option value="Python">Python Core</option>
+                                    <option value="Flask & Django + Advance Python"></option>
+                                    <option value="C++">C++</option>
+                                    <option value="C#">C#</option>
+
+                                    <option value="Web Designing">Web Designing</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="fee" class="label">Fee</label>
+                                <input type="text" class="form-control" placeholder="Enter the Amount" name="fee" id="fee">
+                            </div>
+                            <div class="mb-3">
+                                <label for="start_date" class="label">Start Date</label>
+                                <input type="date" class="form-control" name="start_date" id="start_date">
+                            </div>
+                            <input type="submit" class="btn btn-primary" value="Add Course">
+                        </form>
+                        {{msg}}
+                    </div>
+                </div>
+            </div>
+
+    {% endblock %}
+{% elif  j=="k" %}
+    {% extends "AdminDash.html" %}
+    {% block m2 %}
+            <div class="container  mt-4 ">
+                <div class="row justify-content-center">
+                    <div class="col-md-4">
+                        <h3>Add course</h3>
+                        <form method="post" action="add_course1">
+                            <div class="mb-3">
+                                <label for="reg_no" class="label">Reg No.</label>
+                                <input type="text" class="form-control" name="reg_no" value="{{reg_no}}" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="corse_name">Course name</label>
+                                <select name="corse_name" id="corse_name" class="form-control" required>
+                                    <option value="">Select Course Name</option>
+                                    <option value="C Language"> C Language</option>
+                                    <option value="Python Development"> Python Development</option>
+                                    <option value="Java">Java</option>
+                                    <option value="Mern">Mern</option>
+                                    <option value="Python">Python</option>
+                                    <option value="C++">C++</option>
+                                    <option value="C#">C#</option>
+                                    <option value="Web Designing">Web Designing</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="fee" class="label">Fee</label>
+                                <input type="text" class="form-control" placeholder="Enter the Amount" name="fee" id="fee">
+                            </div>
+                            <div class="mb-3">
+                                <label for="start_date" class="label">Start Date</label>
+                                <input type="date" class="form-control" name="start_date" id="start_date">
+                            </div>
+                            <input type="submit" class="btn btn-primary" value="Add Course">
+                        </form>
+                        {{msg}}
+                    </div>
+                </div>
+            </div>
+    {% endblock %}
+{% endif %}

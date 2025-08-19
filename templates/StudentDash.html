@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="../static/style/bootstrap.min%20(1).css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <script src="../static/scripts/jquery.js"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg fixed-top  bg-primary" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold fs-4" href="student_dash">Student Dashboard</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="student_dash"> Student Dashboard
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+
+
+
+        <li class="nav-item">
+          <a class="nav-link" href="logout">Logout</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-sm-2" type="search" placeholder="Search">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<style>
+  body, html {
+      height: 100%;
+      margin: 0;
+        padding-top: 70px; /* Adjust as per navbar height */
+
+    }
+
+    .main-content {
+      min-height: calc(100vh - 60px); /* Adjust height minus footer */
+    }
+
+    footer {
+      height: 60px;
+    }
+</style>
+
+
+
+
+
+
+<div class="main-content">
+{% block m4 %}
+{% endblock %}
+</div>
+<footer class="footer  bg-primary text-white text-center p-2" style="width:100:">
+    <p class="mb-0">© Studentfeemanagement.org.in 2025 All rights Reserved</p>
+  </footer>
+</body>
+<script>
+    $(document).ready(function(){
+        $("#B1").click(function(){
+              $("#B2").slideToggle();
+        })
+
+    })
+</script>
+</html>

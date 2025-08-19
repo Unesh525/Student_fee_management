@@ -1,0 +1,119 @@
+{% extends "AccountantDash.html" %}
+{% block m3 %}
+<style>
+    .img-container
+    {
+        border-radius:50%;
+        background-color: none;
+        width:200px;
+        height:200px;
+        margin-left:50px;
+        object-fit:cover;
+
+    }
+    .img-container img
+    {
+        border-radius:50%;
+        object-fit:cover;
+        border:1px solid grey;
+        padding:2px;
+
+    }
+    .container h1
+    {
+        font-family:verdana, sans-serif;;
+        font-weight: bold;
+        font-size:30px;
+    }
+    tr
+    {
+    font-size:13px;
+    }
+
+
+</style>
+<div class="container mb-3 mt-3 rounded bg-success-subtle w-25 h-50 p-2 shadow">
+<h1 align="center" >Accountant Home</h1>
+        {% if photo %}
+            <p><a href="change_photo"> <img src="../static/images/img_1.png" style="width:50px;position:absolute;"> </a></p>
+            <div  class="img-container">
+            <img  src="{{ url_for('static', filename='uploads/' + photo) }}"  width="200" height="200"  >
+            </div>
+        {% elif n==1 %}
+            <div class="img-container">
+            <p><a href="photo"><img src="../static/images/img.png" style="width:40px;position:absolute;margin-bottom:-50px;margin-left:-30px;"> </a> </p>
+            <img  src="../static/images/img_2.png" style="border-radius:50%;"  width="200" height="200" >
+            </div>
+
+        {% endif %}
+                  {% if data %}
+                {% for d in data %}
+                <p >Name : {{d[0]}}</p>
+                <p>Email : {{d[1]}}</p>
+                <p>Contact : {{d[2]}}</p>
+                <p>Address : {{d[3]}}</p>
+                <p>Date of Birth : {{d[4]}}</p>
+                <p>Gender : {{d[5]}}</p>
+                {% endfor %}
+                    {% endif %}
+                    <p>
+                <a href="change_password" class="btn btn-block btn-success">Change Password</a>
+                <a href="edit_admin_profile" class="btn btn-block btn-primary">Edit Profile</a>  </p>
+    </div>
+
+<div class="container  ">
+    <h1 align="center">All  Student's</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+            {% if data1 %}
+            <table  class="table text-center " style="text-align:center;align-content:center;" width="100%">
+                <thead class="bg-dark ">
+                <tr>
+                    <th>Form No./Enrollment No.</th>
+                    <th>Student Name </th>
+                    <th>Father's Name</th>
+                    <th>Mother's Name </th>
+                    <th>Gender</th>
+                    <th>Date Of Birth</th>
+                    <th>Category</th>
+                    <th>Domicile</th>
+                    <th>Address</th>
+                    <th>Contact No</th>
+                    <th>Email</th>
+                    <th>Institute Name</th>
+                    <th>Open</th>
+                </tr>
+                </thead>
+                {% for d in data1 %}
+                <tr>
+                    <td>{{d[0]}}</td>
+                    <td>{{d[1]}}</td>
+                    <td>{{d[2]}}</td>
+                    <td>{{d[3]}}</td>
+                    <td>{{d[4]}}</td>
+                    <td>{{d[5]}}</td>
+                    <td>{{d[6]}}</td>
+                    <td>{{d[7]}}</td>
+                    <td>{{d[8]}}</td>
+                    <td>{{d[9]}}</td>
+                    <td>{{d[10]}}</td>
+                    <td>{{d[11]}}</td>
+
+                    <td>
+                        <form action="student_dash" method="post">
+                            <input type="hidden" name="T1" value="{{d[0]}}">
+                            <p><input type="submit" class="btn btn-block btn-success" value="Click"></p>
+                        </form>
+
+                    </td>
+
+                </tr>
+                {% endfor %}
+
+            </table>
+            {% endif %}
+            <p>{{msg}}</p>
+        </div>
+    </div>
+    </div>
+{% endblock %}

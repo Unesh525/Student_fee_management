@@ -1,0 +1,581 @@
+{% if j=="j" %}
+    {% extends "AccountantDash.html" %}
+    {% block m3 %}
+
+        <style>
+            body
+            {
+            font-size:15px;
+            }
+            .jk
+            {
+                font-weight: bold;
+                margin-left:20px;
+            }
+
+            .container img
+            {
+            border-radius: 0.20rem;
+            padding: 0.20rem;
+            border:2px solid grey;
+            }
+            td
+            {
+                padding: 0.50rem;{
+                width:100px;
+
+            }
+            tr
+
+        </style>
+        <h1 align="center" class="mt-5">Student DashBoard</h1>
+        <div class="container d-flex mt-5 bg-light p-5 rounded shadow">
+
+            {% if data %}
+
+                <table width="85%">
+                    <tr>
+                        <td><h3 style="font-family:times;font-weight:bold;">Student Information</h3></td>
+                    </tr>
+                    {% for d in data %}
+                    <tr >
+                        <td >Form No./Enrollment No.</td>
+                        <td class="jk">{{d[0]}}</td>
+                        <td >Student Name</td>
+                        <td class="jk">{{d[1]}}</td>
+                    </tr>
+                    <tr>
+                        <td >Father's Name</td>
+                        <td class="jk">{{d[2]}}</td>
+                        <td >Mother's Name</td>
+                        <td class="jk">{{d[3]}}</td>
+                    </tr>
+                    <tr>
+                        <td >Gender </td>
+                        <td class="jk">{{d[4]}}</td>
+                        <td >Date of Birth </td>
+                        <td class="jk" >{{d[5]}}</td>
+                    </tr>
+                    <tr>
+                        <td >Category </td>
+                        <td class="jk" >{{d[6]}}</td>
+                        <td>Domicile</td>
+                        <td class="jk" >{{d[7]}}</td>
+                    </tr>
+                    <tr>
+                        <td >Address </td>
+                        <td class="jk">{{d[8]}}</td>
+                        <td >Contact NO </td>
+                        <td class="jk">{{d[9]}}</td>
+                    </tr>
+                    <tr>
+                        <td >Email </td>
+                        <td class="jk" > {{d[10]}}</td>
+                        <td >Institute Name </td>
+                        <td class="jk">{{d[11]}}</td>
+                    </tr>
+                    <tr>
+
+                        <td class="d-flex gap-3">
+                            {% if j=="j" %}
+                                <form action="/edit_students" method="POST">
+                                    <input type="hidden" name="T1" value="{{d[0]}}"/>
+                                    <input type="submit" class="btn btn-block btn-success"  value="Edit"/>
+                                </form>
+                            {% elif j=="k" %}
+
+                                <form action="/delete_students" method="post">
+                                    <input type="hidden" name="T1" value="{{d[0]}}"/>
+                                    <input type="submit" class="btn btn-block btn-primary" value="Delete"/>
+                                </form>
+                            {% endif %}
+                        </td>
+                    </tr>
+                </table>
+                    <div class="container w-25  mt-5 justify-content-end rounded-0 ">
+                    {% if photo!="no" %}
+                        <img src="../static/uploads/{{photo}}" alt="" class="rounded-0" width="220" height="250">
+                        <form action="student_change_photo1" method="post">
+                            <input type="hidden" name="T15" value="{{d[0]}}"/>
+                            <input type="submit" class="btn  w-100 rounded-0 btn-success" value="Change Photo"/>
+                        </form>
+                    {% else %}
+                    <div class="container w-25  mt-5 justify-content-end">
+                    </div>
+                        <form action="student_photo" method="post">
+                            <input type="hidden" name="T15" value="{{d[0]}}"/>
+                            <input type="submit" class="btn btn-block btn-success" value="Upload Photo">
+                        </form>
+
+                    {% endif %}
+                 </div>
+
+
+        </div>
+
+        <div class="container mt-5 mb-5">
+
+            <form action="add_course" method="POST">
+                <input type="hidden" name="T1" value="{{d[0]}}"/>
+                <button type="submit" class="btn btn-primary">Add Course <i class="bi bi-plus fs-5"> </i> </button>
+            </form>
+
+            {% if data1 %}
+            <table class="table">
+                <tr>
+                    <th>Course id</th>
+                    <th>Course Name</th>
+                    <th>Fee</th>
+                    <th>Start Date</th>
+                    <th>Paid</th>
+                    <th>Due</th>
+                    <th>Action</th>
+                </tr>
+                {% for d in data1 %}
+                <tr>
+                    <td>{{d[0]}}</td>
+                    <td>{{d[1]}}</td>
+                    <td>{{d[2]}}</td>
+                    <td>{{d[3]}}</td>
+                    <td>{{d[5]}}</td>
+                    <td>{{d[6]}}</td>
+
+                    <td class="d-flex  gap-2">
+                         {% if j=="j" %}
+                        <form action="deposit_amt" method="POST">
+                            <input type="hidden" name="T1" value="{{d[0]}}"/>
+                            <input type="submit" class="btn btn-block btn-info" value="&#8377; Deposit"/>
+                        </form>
+                          {% elif j=="k" %}
+                        <form action="edit_course" method="post">
+                            <input type="hidden" name="T1" value="{{d[0]}}"/>
+                            <input type="submit" class="btn btn-block btn-success"  value="Edit"/>
+                        </form>
+                        <form action="delete_course" method="post">
+                            <input type="hidden" name="T1" value="{{d[0]}}"/>
+                            <input type="submit" class="btn btn-block btn-primary" value="Delete"/>
+                        </form>
+                        {% endif %}
+
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </table>
+                  <div class="container">
+    <p class="gap-3 d-flex"><span class="fw-bold">Total fee :</span> {{total_fee}}<span class="fw-bold"> Total Paid :</span> {{total_deposit}}  <span class="fw-bold">Total Due :</span>{{total_due}}</p>
+</div>
+            {% endif %}
+
+        </div>
+          {% endfor %}
+            {% endif %}
+
+
+
+
+        <div class="container mt-5 mb-5">
+        <h3>Installment</h3>
+        {% if data5 %}
+        <table class="table">
+            <tr>
+                <th>Transaction id</th>
+                <th>Deposit</th>
+                <th>Course Name</th>
+                <th>Date of Installment</th>
+                <th>Transaction mode</th>
+            </tr>
+            {% for d in data5 %}
+            <tr>
+                <td>{{d[0]}}</td>
+                <td>{{d[4]}}</td>
+                <td>{{d[3]}}</td>
+                <td>{{d[5]}}</td>
+                <td>{{d[6]}}</td>
+                <td>
+                    <form action="receipt" method="post">
+                        <input type="hidden" name="T1" value="{{d[0]}}">
+                        <button class="btn btn-block btn-info">Receipt</button>
+                    </form>
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+
+        {% endif %}
+        </div>
+
+
+
+
+    {% endblock %}
+{% elif  j=="k" %}
+    {% extends "AdminDash.html" %}
+    {% block m2 %}
+        <style>
+            .jk
+            {
+                font-weight: bold;
+
+            }
+            table
+            {
+                font-family: calibri;
+            }
+            .container img
+            {
+            border-radius: 0.20rem;
+            padding: 0.20rem;
+            border:2px solid grey;
+            }
+            td
+            {
+                padding: 0.50rem;{
+                width:100px;
+
+            }
+            tr
+
+        </style>
+        <h1 align="center" class="mt-5">Student DashBoard</h1>
+            <div class="container d-flex mt-5 bg-light p-5 rounded shadow">
+
+            {% if data %}
+
+                <table width="90%">
+                    <tr>
+                        <td><h3 style="font-family:times;font-weight:bold;">Student Information</h3></td>
+                    </tr>
+                    {% for d in data %}
+                    <tr >
+                        <td >Form No./Enrollment No.</td>
+                        <td class="jk">{{d[0]}}</td>
+                        <td >Student Name</td>
+                        <td class="jk">{{d[1]}}</td>
+                    </tr>
+                    <tr>
+                        <td >Father's Name</td>
+                        <td class="jk">{{d[2]}}</td>
+                        <td >Mother's Name</td>
+                        <td class="jk">{{d[3]}}</td>
+                    </tr>
+                    <tr>
+                        <td >Gender </td>
+                        <td class="jk">{{d[4]}}</td>
+                        <td >Date of Birth </td>
+                        <td class="jk" >{{d[5]}}</td>
+                    </tr>
+                    <tr>
+                        <td >Category </td>
+                        <td class="jk" >{{d[6]}}</td>
+                        <td>Domicile</td>
+                        <td class="jk" >{{d[7]}}</td>
+                    </tr>
+                    <tr>
+                        <td >Address </td>
+                        <td class="jk">{{d[8]}}</td>
+                        <td >Contact NO </td>
+                        <td class="jk">{{d[9]}}</td>
+                    </tr>
+                    <tr>
+                        <td >Email </td>
+                        <td class="jk" > {{d[10]}}</td>
+                        <td >Institute Name </td>
+                        <td class="jk">{{d[11]}}</td>
+                    </tr>
+                    <tr>
+                        <td class="d-flex gap-3">
+                            <form action="/edit_students" method="POST">
+                                <input type="hidden" name="T1" value="{{d[0]}}"/>
+                                <input type="submit" class="btn btn-block btn-success"  value="Edit"/>
+                            </form>
+                        <form action="/delete_students" method="post">
+                            <input type="hidden" name="T1" value="{{d[0]}}"/>
+                            <input type="submit" class="btn btn-block btn-primary" value="Delete"/>
+                        </form>
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="container w-25  mt-5 justify-content-end rounded-0  ">
+                    {% if photo!="no" %}
+                        <img src="../static/uploads/{{photo}}" alt="" class="rounded-0" width="206" height="250">
+                        <form action="student_change_photo1" method="post">
+                            <input type="hidden" name="T15" value="{{d[0]}}"/>
+                            <input type="submit" class="btn  w-100 rounded-0 btn-success" value="Change Photo"/>
+                        </form>
+                    {% else %}
+                    <div class="container w-25  mt-5 justify-content-end">
+                    </div>
+                        <form action="student_photo" method="post">
+                            <input type="hidden" name="T15" value="{{d[0]}}"/>
+                            <input type="submit" class="btn btn-block btn-success" value="Upload Photo">
+                        </form>
+
+                    {% endif %}
+                 </div>
+
+        </div>
+
+        <div class="container mt-5 mb-5">
+
+            <form action="add_course" method="POST">
+                <input type="hidden" name="T1" value="{{d[0]}}"/>
+                <button type="submit" class="btn btn-primary">Add Course <i class="bi bi-plus fs-5"> </i> </button>
+            </form>
+            {% if data1 %}
+            <table class="table">
+                <tr>
+                    <th>Course id</th>
+                    <th>Course Name</th>
+                    <th>Fee</th>
+                    <th>Start Date</th>
+                    <th>Paid</th>
+                    <th>Due</th>
+                    <th>Action</th>
+                </tr>
+                {% for d in data1 %}
+                <tr>
+                    <td>{{d[0]}}</td>
+                    <td>{{d[1]}}</td>
+                    <td>{{d[2]}}</td>
+                    <td>{{d[3]}}</td>
+                     <td>{{d[5]}}</td>
+                    <td>{{d[6]}}</td>
+                    <td class="d-flex  gap-2">
+                        <form action="deposit_amt" method="POST">
+                            <input type="hidden" name="T1" value="{{d[0]}}"/>
+                            <input type="submit" class="btn btn-block btn-info" value="&#8377; Deposit"/>
+                        </form>
+                        <form action="edit_course" method="post">
+                            <input type="hidden" name="T1" value="{{d[0]}}"/>
+                            <input type="submit" class="btn btn-block btn-success"  value="Edit"/>
+                        </form>
+                        <form action="delete_course" method="post">
+                            <input type="hidden" name="T1" value="{{d[0]}}"/>
+                            <input type="submit" class="btn btn-block btn-primary" value="Delete"/>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+             <div class="container">
+    <p class="gap-3 d-flex"><span class="fw-bold">Total fee :</span> {{total_fee}}<span class="fw-bold"> Total Paid :</span> {{total_deposit}}  <span class="fw-bold">Total Due :</span>{{total_due}}</p>
+</div>
+            {% endif %}
+
+        </div>
+          {% endfor %}
+            {% endif %}
+
+
+        <div class="container mt-5 mb-5">
+        <h3>Installment</h3>
+        {% if data5 %}
+        <table class="table">
+            <tr>
+                <th>Transaction id</th>
+                <th>Deposit</th>
+                <th>Course Name</th>
+                <th>Date of Installment</th>
+                <th>Transaction mode</th>
+                <th class="gap-4">Action</th>
+            </tr>
+            {% for d in data5 %}
+            <tr>
+                <td>{{d[0]}}</td>
+                <td>{{d[4]}}</td>
+                <td>{{d[3]}}</td>
+                <td>{{d[5]}}</td>
+                <td>{{d[6]}}</td>
+                <td class="d-flex  gap-4">
+                         <form action="edit_transaction" method="POST">
+                            <input type="hidden" name="T1" value="{{d[0]}}"/>
+                            <input type="submit" class="btn btn-block btn-success"  value="Edit"/>
+                        </form>
+                        <form action="delete_transaction" method="post">
+                            <input type="hidden" name="T1" value="{{d[0]}}"/>
+                            <input type="submit" class="btn btn-block btn-primary" value="Delete"/>
+                        </form>
+                </td>
+                 <td>
+                    <form action="receipt" method="post">
+                        <input type="hidden" name="T1" value="{{d[0]}}">
+                        <button class="btn btn-block btn-info">Receipt</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+        {% endif %}
+        </div>
+    {% endblock %}
+{% elif  j=="u" %}
+    {% extends "StudentDash.html" %}
+    {% block m4 %}
+             <style>
+            body
+            {
+            font-size:15px;
+            }
+            .jk
+            {
+                font-weight: bold;
+                margin-left:20px;
+            }
+
+            .container img
+            {
+            border-radius: 0.20rem;
+            padding: 0.20rem;
+            border:2px solid grey;
+            }
+            td
+            {
+                padding: 0.50rem;{
+                width:100px;
+
+            }
+            tr
+
+        </style>
+        <h1 align="center" class="mt-5">Student DashBoard</h1>
+        <div class="container d-flex mt-5 bg-light p-5 rounded shadow">
+
+            {% if data %}
+
+                <table width="85%">
+                    <tr>
+                        <td><h3 style="font-family:times;font-weight:bold;">Student Information</h3></td>
+                    </tr>
+                    {% for d in data %}
+                    <tr >
+                        <td >Form No./Enrollment No.</td>
+                        <td class="jk">{{d[0]}}</td>
+                        <td >Student Name</td>
+                        <td class="jk">{{d[1]}}</td>
+                    </tr>
+                    <tr>
+                        <td >Father's Name</td>
+                        <td class="jk">{{d[2]}}</td>
+                        <td >Mother's Name</td>
+                        <td class="jk">{{d[3]}}</td>
+                    </tr>
+                    <tr>
+                        <td >Gender </td>
+                        <td class="jk">{{d[4]}}</td>
+                        <td >Date of Birth </td>
+                        <td class="jk" >{{d[5]}}</td>
+                    </tr>
+                    <tr>
+                        <td >Category </td>
+                        <td class="jk" >{{d[6]}}</td>
+                        <td>Domicile</td>
+                        <td class="jk" >{{d[7]}}</td>
+                    </tr>
+                    <tr>
+                        <td >Address </td>
+                        <td class="jk">{{d[8]}}</td>
+                        <td >Contact NO </td>
+                        <td class="jk">{{d[9]}}</td>
+                    </tr>
+                    <tr>
+                        <td >Email </td>
+                        <td class="jk" > {{d[10]}}</td>
+                        <td >Institute Name </td>
+                        <td class="jk">{{d[11]}}</td>
+                    </tr>
+                    <tr>
+
+
+                    </tr>
+                </table>
+                    <div class="container w-25 bordered  mt-5 justify-content-end rounded-0 ">
+                    {% if photo!="no" %}
+                        <img src="../static/uploads/{{photo}}" alt="" class="rounded-0" width="220" height="250">
+
+                    {% else %}
+                        <div class="container" style="border:2px solid grey;width:200px;height:200px;" >
+                            <h6 class="d-flex  justify-content-center" style="margin-top:80px;">photo not available</h6>
+                        </div>
+                    {% endif %}
+                 </div>
+
+
+        </div>
+
+        <div class="container mt-5 mb-5">
+        <h3 class="fw-bold">All Courses</h3>
+
+
+            {% if data1 %}
+            <table class="table">
+                <tr>
+                    <th>Course id</th>
+                    <th>Course Name</th>
+                    <th>Fee</th>
+                    <th>Start Date</th>
+                    <th>Paid</th>
+                    <th>Due</th>
+                </tr>
+                {% for d in data1 %}
+                <tr>
+                    <td>{{d[0]}}</td>
+                    <td>{{d[1]}}</td>
+                    <td>{{d[2]}}</td>
+                    <td>{{d[3]}}</td>
+                    <td class="text-success fw-bold">{{d[5]}}</td>
+                    <td class="text-danger fw-bold">{{d[6]}}</td>
+
+
+                </tr>
+                {% endfor %}
+            </table>
+            <div class="container">
+
+    <p class="gap-3 d-flex"><span class="fw-bold">Total fee :</span> {{total_fee}}<span class="fw-bold"> Total Paid :</span> {{total_deposit}}  <span class="fw-bold">Total Due :</span>{{total_due}}</p>
+</div>
+            {% endif %}
+
+        </div>
+
+          {% endfor %}
+            {% endif %}
+
+
+
+        <div class="container mt-5 mb-5">
+        <h3 class="fw-bold">Installment</h3>
+        {% if data5 %}
+        <table class="table">
+            <tr>
+                <th>Transaction id</th>
+                <th>Deposit</th>
+                <th>Course Name</th>
+                <th>Date of Installment</th>
+                <th>Transaction mode</th>
+            </tr>
+            {% for d in data5 %}
+            <tr>
+                <td>{{d[0]}}</td>
+                <td>{{d[4]}}</td>
+                <td>{{d[3]}}</td>
+                <td>{{d[5]}}</td>
+                <td>{{d[6]}}</td>
+
+
+            </tr>
+            {% endfor %}
+
+        </table>
+
+        {% endif %}
+        </div>
+    {% endblock %}
+{% endif %}

@@ -1,0 +1,47 @@
+{% extends "AdminDash.html" %}
+{% block m2 %}
+<div class="container mb-5 ">
+    <h1 class="text-center mt-5">Delete Accountant</h1>
+
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+            <a href="admin_home"><i class="bi bi-arrow-left fs-3"></i></a>
+                <p>{{msg}}</p>
+
+            {% if data %}
+            <form action="delete1_accountant" method="post">
+                {% for d in data %}
+              <div class="mb-3">
+                <label for="id" class="form-label">Employee Id :</label>
+                <input type="text" class="form-control" value="{{d[0]}}"  name="T1" readonly>
+              </div>
+              <div class="mb-3">
+                <label for="name" class="form-label">Name :</label>
+                <input type="text" class="form-control" value="{{d[1]}}"  name="T2" readonly>
+              </div>
+              <div class="mb-3">
+                <label for="contact" class="form-label">Contact :</label>
+                <input type="text" class="form-control" value="{{d[2]}}"  name="T3" readonly>
+              </div>
+              <div class="mb-3">
+                <label for="address" class="form-label">Address :</label>
+                <input type="text" class="form-control" value="{{d[3]}}"  name="T4" readonly>
+              </div>
+              <div class="mb-3">
+                <label for="gender" class="form-label">Gender :</label>
+                <input type="radio" name="T5" value="Male" {% if d[4] == 'Male' %}checked{% endif %}> Male
+                <input type="radio" name="T5" value="Female" {% if d[4] == 'Female' %}checked{% endif %}> Female
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email :</label>
+                <input type="text" class="form-control" value="{{d[5]}}"  name="T6" readonly>
+              </div>
+                <input type="submit" class="btn btn-block btn-primary" value="Delete">
+                {% endfor %}
+            </form>
+      </div>
+    </div>
+</div>
+
+{% endif %}
+{% endblock %}

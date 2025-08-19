@@ -1,0 +1,52 @@
+{% extends "AdminDash.html" %}
+{% block m2 %}
+<div class="container mb-5 ">
+    <h1 class="text-center mt-5">Edit Admin Profile</h1>
+
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+          {% if data %}
+            <form method="post" action="edit_admin_profile">
+                    {% for d in data %}
+                <a href="admin_home"> <i class="bi bi-arrow-left fs-4"></i></a>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" value="{{d[0]}}" name="T1" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" class="form-control" value="{{d[1]}}" name="T2"  required>
+                <div class="mb-3">
+                    <label for="contact" class="form-label">Contact</label>
+                    <input type="text" class="form-control" name="T3" value="{{d[2]}}" required></p>
+                </div>
+                <div class="mb-3">
+                    <label for="Address" class="form-label">Address</label>
+                    <input type="text" class="form-control" value="{{d[3]}}" name="T5" required></p>
+                </div>
+                <div class="mb-3">
+                    <label for="Date of Birth" class="form-label">Date of Birth</label>
+                    <input type="date" class="form-control" value="{{d[4]}}" name="T6" required></p>
+                </div>
+                <div class="mb-3">
+                        <label for="gender" class="form-label">Gender :  </label>
+                        <select name="T7" id="gender" class="form-select" required>
+                            <option value="{{d[5]}}">Select</option>
+                            <option value="{{d[5]}}">Male</option>
+                            <option value="{{d[5]}}">Female</option>
+                            <option value="{{d[5]}}">Other</option>
+                        </select>
+                </div>
+                <p><input type="submit" class="btn btn-block btn-primary" value="Save & Change"></p>
+                    {% endfor %}
+                    {% elif msg %}
+          <a href="admin_home"> <i class="bi bi-arrow-left fs-4"></i></a>
+          <p>{{msg}}</p>
+
+{% endif %}
+            </form>
+
+      </div>
+ </div>
+</div>
+{% endblock %}

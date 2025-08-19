@@ -1,0 +1,47 @@
+{% extends "AdminDash.html" %}
+{% block m2 %}
+<div class="container mb-5 ">
+    <div class="row justify-content-center">
+        <h1 align="center" class="mt-5 ">Mange Accountant</h1>
+        <p><a href="admin_home" style="margin-left:200px;" ><i class="bi bi-arrow-left fs-3"></i></a></p>
+        {% if data %}
+        <table border="2px solid grey" class="table table-success w-50 table-bordered" style="text-align:center;" width="100%">
+            <thead class="thead-dark">
+            <tr>
+                <th>Employee Id</th>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Address</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th class="w-50">Mange</th>
+            </tr>
+            </thead>
+            {% for d in data %}
+            <tr>
+              <td>{{d[0]}}</td>
+              <td>{{d[1]}}</td>
+              <td>{{d[2]}}</td>
+              <td>{{d[3]}}</td>
+              <td>{{d[4]}}</td>
+              <td>{{d[5]}}</td>
+              <td class="d-flex"><br>
+                  <form action="edit_accountant" method="post">
+                      <input type="hidden" name="T1" value="{{d[5]}}">
+                      <input type="submit" class="btn btn-block btn-success" value="Edit">
+                  </form>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <form action="delete_accountant" method="post">
+                      <input type="hidden" name="T1" value="{{d[5]}}">
+                      <input type="submit" class="btn btn-block btn-primary" value="Delete">
+                  </form>
+              </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% elif msg %}
+           <p> {{msg}} </p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

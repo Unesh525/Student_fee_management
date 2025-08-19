@@ -1,0 +1,168 @@
+{% if j=="l" %}
+    {% extends "AccountantDash.html" %}
+    {% block m3 %}
+    <div class="container mb-5 ">
+        <h1 class="text-center mt-5">Student Edit</h1>
+
+        <div class="row justify-content-center">
+          <div class="col-md-4">
+            <a href="accountant_home"><i class="bi bi-arrow-left fs-3"></i></a>
+                {% if data %}
+                <form method="post" action="edit1_students">
+                    {%for d in data %}
+                    <div class="mb-3">
+                        <label for="reg" class="form-label">Form No./Enrollment No.</label>
+                        <input type="text" name="T1" value="{{d[0]}}" class="form-control"   readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="s-name" class="form-label">Student Name</label>
+                        <input type="text" name="T2" value="{{d[1]}}" class="form-control"   required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="f-name" class="form-label">Father Name</label>
+                        <input type="text" name="T3" value="{{d[2]}}" class="form-control"   required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="m-name" class="form-label">Mother Name</label>
+                        <input type="text" name="T4" value="{{d[3]}}" class="form-control"   required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="gender" class="form-label">Gender :  </label>
+                        <select name="T5" id="gender" class="form-select" required>
+                            <option value="{{d[4]}}">Select</option>
+                            <option value="{{d[4]}}">Male</option>
+                            <option value="{{d[4]}}">Female</option>
+                            <option value="{{d[4]}}">Other</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="DOB" class="form-label">Date of Birth: </label>
+                        <input type="date" name="T6" value="{{d[5]}}" class="form-control"   required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Category</label>
+                        <select name="T7"  class="form-control" required>
+                            <option value="{{d[6]}}">Select</option>
+                            <option value="{{d[6]}}">General</option>
+                            <option value="{{d[6]}}">SC</option>
+                            <option value="{{d[6]}}">ST</option>
+                            <option value="{{d[6]}}">OBC</option>
+                            <option value="{{d[6]}}">PH</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Domicile" class="form-label">Domicile</label>
+                        <input type="text" value="{{d[7]}}" name="T8" class="form-control"   required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Address" class="form-label">Address</label>
+                        <input type="text" value="{{d[8]}}" class="form-control" name="T9" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contact" class="form-label">Contact No</label>
+                        <input type="text" value="{{d[9]}}" name="T10" class="form-control"   required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="text"  value="{{d[10]}}" name="T11" class="form-control"  required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="institute" class="form-label">Institute Name</label>
+                        <input type="text" value="{{d[11]}}" name="T12" class="form-control"  required>
+                    </div>
+                    <input type="submit" class="btn btn-block btn-primary" value="submit" >
+                    {% endfor %}
+                </form>
+                {% endif %}
+                                  <p>{{msg}}</p>
+
+
+
+          </div>
+        </div>
+    </div>
+{% endblock %}
+{% elif  j=="k" %}
+    {% extends "AdminDash.html" %}
+    {% block m2 %}
+ <div class="container mb-5 ">
+        <h1 class="text-center mt-5">Student Edit</h1>
+
+        <div class="row justify-content-center">
+          <div class="col-md-4">
+            <a href="admin_home"><i class="bi bi-arrow-left fs-3"></i></a>
+                {% if data %}
+                <form method="post" action="edit1_students">
+                    {%for d in data %}
+                    <div class="mb-3">
+                        <label for="reg" class="form-label">Form No./Enrollment No.</label>
+                        <input type="text" name="T1" value="{{d[0]}}" class="form-control"   required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="s-name" class="form-label">Student Name</label>
+                        <input type="text" name="T2" value="{{d[1]}}" class="form-control"   required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="f-name" class="form-label">Father Name</label>
+                        <input type="text" name="T3" value="{{d[2]}}" class="form-control"   required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="m-name" class="form-label">Mother Name</label>
+                        <input type="text" name="T4" value="{{d[3]}}" class="form-control"   required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="gender" class="form-label">Gender :  </label>
+                        <select name="T5" id="gender" class="form-select" required>
+                            <option value="{{d[4]}}">Select</option>
+                            <option value="{{d[4]}}">Male</option>
+                            <option value="{{d[4]}}">Female</option>
+                            <option value="{{d[4]}}">Other</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="DOB" class="form-label">Date of Birth: </label>
+                        <input type="date" name="T6" value="{{d[5]}}" class="form-control"   required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Category</label>
+                        <select name="T7"  class="form-control" required>
+                            <option value="{{d[6]}}">Select</option>
+                            <option value="{{d[6]}}">General</option>
+                            <option value="{{d[6]}}">SC</option>
+                            <option value="{{d[6]}}">ST</option>
+                            <option value="{{d[6]}}">OBC</option>
+                            <option value="{{d[6]}}">PH</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Domicile" class="form-label">Domicile</label>
+                        <input type="text" value="{{d[7]}}" name="T8" class="form-control"   required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Address" class="form-label">Address</label>
+                        <input type="text" value="{{d[8]}}" class="form-control" name="T9" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contact" class="form-label">Contact No</label>
+                        <input type="text" value="{{d[9]}}" name="T10" class="form-control"   required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="text"  value="{{d[10]}}" name="T11" class="form-control"  required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="institute" class="form-label">Institute Name</label>
+                        <input type="text" value="{{d[11]}}" name="T12" class="form-control"  required>
+                    </div>
+                    <input type="submit" class="btn btn-block btn-primary" value="submit" >
+                    {% endfor %}
+
+                </form>
+                {% endif %}
+                                                <p>{{msg}}</p>
+
+          </div>
+        </div>
+    </div>
+{% endblock %}
+{% endif %}

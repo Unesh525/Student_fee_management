@@ -1,0 +1,85 @@
+{% extends "AccountantDash.html" %}
+{% block m3 %}
+<div class="container mb-5 ">
+        <h1 class="text-center mt-5">Student Registration</h1>
+
+        <div class="row justify-content-center">
+          <div class="col-md-4">
+            <a href="accountant_home"><i class="bi bi-arrow-left fs-3"></i></a>
+            <form method="post" action="students_reg" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="reg" class="form-label">Form No./Enrollment No.</label>
+                        <input type="text" name="T1" class="form-control"   required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="s-name" class="form-label">Student Name</label>
+                        <input type="text" name="T2" class="form-control"   required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="f-name" class="form-label">Father Name</label>
+                        <input type="text" name="T3" class="form-control"   required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="m-name" class="form-label">Mother Name</label>
+                        <input type="text" name="T4" class="form-control"   required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="gender" class="form-label">Gender :  </label>
+                        <select name="T5" id="gender" class="form-select" required>
+                            <option value="select">Select</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="DOB" class="form-label">Date of Birth: </label>
+                        <input type="date" name="T6" class="form-control"   required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Category</label>
+                        <select name="T7" class="form-control" required>
+                            <option value="">Select</option>
+                            <option value="General">General</option>
+                            <option value="SC">SC</option>
+                            <option value="ST">ST</option>
+                            <option value="OBC">OBC</option>
+                            <option value="PH">PH</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Domicile" class="form-label">Domicile</label>
+                        <input type="text" name="T8" class="form-control"   required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Address" class="form-label">Address</label>
+                        <input type="text" class="form-control" name="T9" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contact" class="form-label">Contact No</label>
+                        <input type="text" name="T10" class="form-control"   required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="text" name="T11" class="form-control"  required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="institute" class="form-label">Institute Name</label>
+                        <input type="text" name="T12" class="form-control"  required>
+                    </div>
+                       <div class="mb-3">
+                    <label for="password" class="form-label">Password </label>
+                    <input type="password" class="form-control" name="T13" required></p>
+                </div>
+                <div class="mb-3">
+                    <label for="c" class="form-label">Confirm Password  </label>
+                    <input type="password" class="form-control"  name="T14" required>
+                </div>
+                    <input type="submit" class="btn btn-block btn-primary" name="submit" value="Submit">
+                </form>
+            <p>{{msg}}</p>
+          </div>
+        </div>
+    </div>
+
+{% endblock %}

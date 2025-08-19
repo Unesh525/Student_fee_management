@@ -1,0 +1,24 @@
+{% if j=="j" %}
+    {% extends "AccountantDash.html" %}
+    {% block m3 %}
+        <div class="container  mt-5 rounded bg-success-subtle w-25 h-50 p-2 shadow">
+
+            <h2>Upload Your Photo</h2>
+                <form method="POST" action="photo1" enctype="multipart/form-data">
+                    <input type="file" class="btn btn-block btn-success w-75" name="F1" required><br>
+                    <input type="submit" class="btn btn-block btn-danger mt-3" value="Upload">
+                </form>
+            </div>
+    {% endblock %}
+{% elif j=="k" %}
+    {% extends "AdminDash.html" %}
+    {% block m2 %}
+    <div class="container  mt-5 rounded bg-success-subtle w-25 h-50 p-2 shadow">
+    <h2>Upload Your Photo</h2>
+        <form method="POST" action="photo1" enctype="multipart/form-data">
+            <input type="file" class="btn btn-block btn-success w-75" name="F1" required><br>
+            <input type="submit" class="btn btn-block btn-danger mt-3" value="Upload">
+        </form>
+    </div>
+    {% endblock %}
+{% endif %}

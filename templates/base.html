@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Fee Management</title>
+  <link rel="stylesheet" href="../static/style/bootstrap.min%20(1).css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold fs-4" href="/">Student Fee Management</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="/">Home
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about_us">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact_us">Contact Us</a>
+        </li>
+
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-sm-2" type="search" placeholder="Search">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<style>
+  body, html {
+      height: 100%;
+      margin: 0;
+    }
+
+    .main-content {
+      min-height: calc(100vh - 60px); /* Adjust height minus footer */
+    }
+
+    footer {
+      height: 60px;
+    }
+</style>
+
+
+
+<div class="main-content ">
+{% block m1 %}
+{% endblock %}
+</div>
+
+<footer class="footer bg-primary text-white  p-2">
+    <p class="text-center mb-0">© Studentfeemanagement.org.in 2025 All rights Reserved <span>Developed By </span> <a href="https://umeshkumarmeghwal.netlify.app/" class="text-white ">Umesh Kumar Meghwal</a> </p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,234 @@
+{% if j=="j" %}
+    {% extends "AccountantDash.html" %}
+    {% block m3 %}
+            <style>
+                h2 {
+                  margin: 4px 0;
+                  font-family:verdana;
+                  font-weight:bold;
+                }
+                p {
+                  margin: 4px 0;
+                  }
+                .header {
+                  text-align: center;
+                  line-height: 1.4;
+                }
+
+                .section {
+                  margin-top: 20px;
+                }
+
+
+                .signature {
+                  margin-top: 50px;
+                  display: flex;
+                  justify-content: space-between;
+                  margin-top:200px;
+                }
+                .signature div {
+                  border-top: 1px solid #000;
+                  width: 40%;
+                  text-align: center;
+                  padding-top: 5px;
+                }
+                .line
+                {
+                margin-top: 200px;
+                }
+
+
+
+
+
+                /* 🖨️ Print Specific Styling */
+                @media print {
+                  .print-btn {
+                    display: none;
+                  }
+
+                  /* Hide browser decorations if needed (modern browsers auto handle this) */
+                  @page {
+                    margin: 0;
+                  }
+
+                  body {
+                    margin: 0;
+                    box-shadow: none;
+                  }
+                }
+              </style>
+              <div class="container border-black border-2 border mb-5 p-2 " id="nl">
+              <div class="header">
+                <h2>Vikram Genuine Technologies Private Limited</h2>
+                <p>All rights reserved © 2000</p>
+                <p>VGT-1-CHA-17, Dadabari Main Road-9</p>
+                <p>📞 9414321060 | 🌐 vgtindia.org | vgtindia.com</p>
+                <p>✉️ info@vgtindia.org | info@vgtindia.com</p>
+              </div>
+
+              <hr>
+            <div class="container ">
+                <h3 class="text-center">Payment Receipt</h3>
+
+                {% for d in data2 %}
+                <h4>Student Details</h4>
+                <p>Reg no. : {{d[0]}}</p>
+                <p>Student's Name : {{d[1]}}</p>
+                <p>Father's Name  : {{d[2]}}</p>
+                <p>Address : {{d[8]}} </p>
+                <p>Contact No. : {{d[9]}}
+                {% endfor %}
+            </div>
+              <div class="section">
+
+                    {% if data %}
+              <table class="table border border-2">
+                <thead class="thead-dark border border-2">
+                  <tr class="border border-2">
+                    <th class="border border-2">Course ID</th>
+                    <th class="border border-2">Reg No.</th>
+                    <th class="border border-2">Course Name</th>
+                    <th class="border border-2">Amount</th>
+                    <th class="border border-2">Deposit Date</th>
+                    <th class="border border-2">Remark</th>
+                  </tr>
+                </thead>
+                <tbody class="border border-2">
+                  <tr>
+                    <td class="border border-2">{{ data[0] }}</td>
+                    <td class="border border-2">{{ data[1] }}</td>
+                    <td class="border border-2">{{ data[3] }}</td>
+                    <td class="border border-2">₹{{ data[4] }}</td>
+                    <td class="border border-2">{{ data[5] }}</td>
+                    <td class="border border-2">{{ data[6] }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            {% else %}
+              <p class="no-data">No receipt data available.</p>
+            {% endif %}
+
+                   <div class="line "></div>
+                <div class="signature mt-5">
+                  <div>Student Signature</div>
+                  <div>Authorized Signature</div>
+                </div>
+              </div>
+
+                <button onclick="window.print()" class="btn mt-5 btn-block btn-success" style="margin-left:950px;">🖨️ Print Receipt</button>
+            </div>
+    {% endblock %}
+{% elif  j=="k" %}
+    {% extends "AdminDash.html" %}
+    {% block m2 %}
+            <style>
+                h2, p {
+                  margin: 4px 0;
+                }
+
+                .header {
+                  text-align: center;
+                  line-height: 1.4;
+                }
+
+                .section {
+                  margin-top: 20px;
+                }
+
+
+                .signature {
+                  margin-top: 50px;
+                  display: flex;
+                  justify-content: space-between;
+                }
+                .signature div {
+                  border-top: 1px solid #000;
+                  width: 40%;
+                  text-align: center;
+                  padding-top: 5px;
+                }
+
+
+
+
+
+                /* 🖨️ Print Specific Styling */
+                @media print {
+                  .print-btn {
+                    display: none;
+                  }
+
+                  /* Hide browser decorations if needed (modern browsers auto handle this) */
+                  @page {
+                    margin: 0;
+                  }
+
+                  body {
+                    margin: 0;
+                    box-shadow: none;
+                  }
+                }
+              </style>
+              <div class="container border-black border-2 border mb-5 p-2 " id="nl">
+              <div class="header">
+                <h2>Vikram Genuine Technologies Private Limited</h2>
+                <p>All rights reserved © 2000</p>
+                <p>VGT-1-CHA-17, Dadabari Main Road-9</p>
+                <p>📞 9414321060 | 🌐 vgtindia.org | vgtindia.com</p>
+                <p>✉️ info@vgtindia.org | info@vgtindia.com</p>
+              </div>
+
+              <hr>
+            <div class="container ">
+                <h3 class="text-center">Payment Receipt</h3>
+
+                {% for d in data2 %}
+                <h4>Student Details</h4>
+                <p>Reg no. : {{d[0]}}</p>
+                <p>Student's Name : {{d[1]}}</p>
+                <p>Father's Name  : {{d[2]}}</p>
+                <p>Address : {{d[3]}} </p>
+                <p>Contact No. : {{d[4]}}
+                {% endfor %}
+            </div>
+              <div class="section">
+
+                    {% if data %}
+              <table class="table border border-2">
+                <thead class="thead-dark border border-2">
+                  <tr class="border border-2">
+                    <th class="border border-2">Course ID</th>
+                    <th class="border border-2">Reg No.</th>
+                    <th class="border border-2">Course Name</th>
+                    <th class="border border-2">Amount</th>
+                    <th class="border border-2">Deposit Date</th>
+                    <th class="border border-2">Remark</th>
+                  </tr>
+                </thead>
+                <tbody class="border border-2">
+                  <tr>
+                    <td class="border border-2">{{ data[0] }}</td>
+                    <td class="border border-2">{{ data[1] }}</td>
+                    <td class="border border-2">{{ data[3] }}</td>
+                    <td class="border border-2">₹{{ data[4] }}</td>
+                    <td class="border border-2">{{ data[5] }}</td>
+                    <td class="border border-2">{{ data[6] }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            {% else %}
+              <p class="no-data">No receipt data available.</p>
+            {% endif %}
+
+                   <div class="line"></div>
+                <div class="signature">
+                  <div>Student Signature</div>
+                  <div>Authorized Signature</div>
+                </div>
+              </div>
+
+                <button onclick="window.print()" class="btn mt-5 btn-block btn-success" style="margin-left:950px;">🖨️ Print Receipt</button>
+            </div>
+    {% endblock %}
+{% endif %}

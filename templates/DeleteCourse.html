@@ -1,0 +1,48 @@
+{% extends "AdminDash.html" %}
+{% block m2 %}
+
+<div class="container  mt-4 ">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <h3>Delete Course</h3>
+            {% if data %}
+            <form method="post" action="delete_course1">
+                {% for d in data %}
+                <div class="mb-3">
+                    <label for="course_id" class="label">Course Id</label>
+                    <input type="text" class="form-control" name="T1" value="{{d[0]}}"  readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="reg_no" class="label">Reg No.</label>
+                    <input type="text" class="form-control" name="reg_no" value="{{d[4]}}" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="corse_name">Course name</label>
+                    <select name="corse_name" id="corse_name" class="form-control" readonly>
+                        <option value="">Select Course Name</option>
+                        <option value="C Language" {% if d[1] == 'C Language' %}selected{% endif %} readonly> C Language</option>
+                        <option value="Java" {% if d[1] == 'Java' %}selected{% endif %} readonly>Java</option>
+                        <option value="Mern" {% if d[1] == 'Mern' %}selected{% endif %} readonly>Mern</option>
+                        <option value="Python" {% if d[1] == 'Python' %}selected{% endif %} readonly>Python</option>
+                        <option value="C++" {% if d[1] == 'C++' %}selected{% endif %} readonly>C++</option>
+                        <option value="C#" {% if d[1] == 'C#' %}selected{% endif %} readonly>C#</option>
+                        <option value="Web Designing" {% if d[1] == 'Web Designing' %}selected{% endif %} readonly>Web Designing</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="fee" class="label">Fee</label>
+                    <input type="text" value="{{d[2]}}" class="form-control" placeholder="Enter the Amount" name="fee" id="fee" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="start_date" class="label">Start Date</label>
+                    <input type="date" value="{{d[3]}}" class="form-control" name="start_date" id="start_date" readonly>
+                </div>
+                <input type="submit" class="btn btn-primary" value="Delete">
+                {% endfor %}
+                {% endif %}
+            </form>
+            {{msg}}
+        </div>
+    </div>
+</div>
+{% endblock %}

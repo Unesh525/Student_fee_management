@@ -1,0 +1,51 @@
+{% extends "AdminDash.html" %}
+{% block m2 %}
+<div class="container   ">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+<h3>Delete Transaction</h3>
+{% if msg %}
+    {{msg}}
+{% elif d=="d" %}
+
+    <form action="delete_transaction1" method="POST">
+        {% if data %}
+        {% for d in data %}
+       <div class="mb-3">
+            <label for="T_id" class="label" >Transaction ID</label>
+            <input type="text" value="{{d[0]}}" class="form-control" name="T1" readonly>
+      </div>
+      <div class="mb-3">
+        <label for="course_id" class="label" >Course ID</label>
+        <input type="text" value="{{d[2]}}" class="form-control" name="T2" readonly>
+      </div>
+      <div class="mb-3">
+          <label for="reg_no" >Reg No.</label>
+          <input type="text" value="{{d[1]}}" class="form-control" name="T3" readonly>
+      </div>
+      <div class="mb-3">
+          <label for="des_no" >Course Name</label>
+          <input type="text" value="{{d[3]}}" class="form-control" name="T4" readonly>
+      </div>
+       <div class="mb-3">
+          <label for="amount" >amount</label>
+          <input type="text" value="{{d[4]}}" placeholder="Enter the Amount" name="T5" class="form-control" readonly>
+      </div>
+       <div class="mb-3">
+          <label for="deposit_date" >Deposit Date</label>
+          <input type="date" name="T6" value="{{d[5]}}" class="form-control" readonly>
+      </div>
+      <div class="mb-3">
+          <label for="remark" >Remark</label>
+          <input type="text" name="T7" value="{{d[6]}}" class="form-control" readonly >
+      </div>
+      <input type="submit" class="btn btn-block btn-primary" value="Delete">
+        {% endfor %}
+        {% endif %}
+    </form>
+
+{% endif %}
+    </div>
+</div>
+    </div>
+{% endblock %}

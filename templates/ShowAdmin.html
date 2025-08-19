@@ -1,0 +1,37 @@
+{% extends "AdminDash.html" %}
+{% block m2 %}
+<div class="container mb-5 ">
+    <div class="row justify-content-center">
+        <h1 align="center" class="mt-5 ">Show All Admins</h1>
+        <p><a href="admin_home" style="margin-left:270px;" ><i class="bi bi-arrow-left fs-3"></i></a></p>
+
+            {% if data %}
+            <table class="table table-success w-50 table-bordered" >
+                  <thead class="thead-dark">
+
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Address</th>
+                    <th>Date of Birth</th>
+                    <th>Gender</th>
+                </tr>
+                </thead>
+                {% for d in data %}
+                <tr>
+                  <td>{{d[0]}}</td>
+                  <td>{{d[1]}}</td>
+                  <td>{{d[2]}}</td>
+                  <td>{{d[3]}}</td>
+                  <td>{{d[4]}}</td>
+                  <td>{{d[5]}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% elif msg %}
+               <p> {{msg}} </p>
+            {% endif %}
+    </div>
+</div>
+{% endblock %}

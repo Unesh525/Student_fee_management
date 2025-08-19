@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin</title>
+  <link rel="stylesheet" href="../static/style/bootstrap.min%20(1).css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <script src="../static/scripts/jquery.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold fs-4" href="admin_home">Admin</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="admin_home">Home
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" id="B1">
+            Admin
+          </a>
+          <ul class="dropdown-menu" id="B2">
+            <li><a class="dropdown-item" href="admin_reg">Add</a></li>
+            <li><a class="dropdown-item" href="show_admin">Show</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" id="B3">
+            Accountant
+          </a>
+          <ul class="dropdown-menu" id="B4">
+            <li><a class="dropdown-item" href="accountant_reg">Add</a></li>
+            <li><a class="dropdown-item" href="manage_accountant">Manage</a></li>
+          </ul>
+        </li>
+
+
+        <li class="nav-item">
+          <a class="nav-link" href="logout">Logout</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-sm-2" type="search" placeholder="Search">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<style>
+  body, html {
+      height: 100%;
+      margin: 0;
+        padding-top: 70px; /* Adjust as per navbar height */
+
+    }
+
+    .main-content {
+      min-height: calc(100vh - 60px); /* Adjust height minus footer */
+    }
+
+    footer {
+      height: 60px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+</style>
+<div class="main-content">
+{% block m2 %}
+{% endblock %}
+</div>
+
+<footer class="footer position-sticky   bg-primary text-white text-center p-2">
+    <p class="mb-0">© Studentfeemanagement.org.in 2025 All rights Reserved</p>
+  </footer>
+
+
+
+
+</body>
+<script>
+    $(document).ready(function(){
+        $("#B1").click(function(){
+              $("#B2").slideToggle();
+        })
+        $("#B3").click(function(){
+              $("#B4").slideToggle();
+        })
+    })
+</script>
+</html>
